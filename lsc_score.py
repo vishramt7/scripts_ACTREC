@@ -6,10 +6,12 @@ sample_list=sys.argv[1]		# List of samples from sample_list1
 gene_weights = sys.argv[2]	# File containing ensembl id, gene names and their weights
 folder_path = sys.argv[3]	# The Folder path which has the sample folders 
 ABL_ensid = "ENSG00000097007"	# Ensembl id of ABL1 gene used as a normalization factor
+outfile = "lsc_score.dat"
 
 ensid_genes_map = dict()	# Dictionary for mapping ensembl id to gene names
 ensid_weights = dict()		# Dictionary for mapping ensembl id to weights
 
+output_file = open (outfile,'w')
 with open (gene_weights, 'r') as weights_file:
 	for gene_weights in weights_file:
 		gene_weights_list = gene_weights.split()
@@ -44,4 +46,4 @@ with open (sample_list,'r') as infile:
 					LSC_score = LSC_score + product
 					print (samp_ensembl_id,norm_expression, file=outfile, sep="\t")
 		outfile.close()
-		print (samples.rstrip(), LSC_score, sep="\t")
+		print (samples.rstrip(), LSC_score, file=output_file, sep="\t")

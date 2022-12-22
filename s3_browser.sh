@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-fastq_file_csv="miseq_210902_subset.dat"
-path_to_fastq="/home/wtp_server_backup_runs/210902_M04898_0182_000000000-JVD6J/Data/Intensities/BaseCalls"
+fastq_file_csv=$1
+path_to_fastq=$2
 #year=$(date +%Y)
 
 echo "The input file must be a csv, else panel name extraction will be errorneous"
@@ -60,7 +60,7 @@ do
 		"npm1")
 		panel_dir="NPM1"
 		;;
-		"cebpa mrd")
+		"cebpa mrd" | "cebpamrd")
 		panel_dir="CEBPA_MRD"
 		;;
 		"clligvh" | "cll igvh")
@@ -78,7 +78,7 @@ do
 		"usg")
 		panel_dir="USG"
 		;;
-		"cll")
+		"cll" | "cll mips")
 		panel_dir="CLL"
 		;;
 		"flt3mrd")
@@ -89,6 +89,12 @@ do
 		;;
 		"cebpa")
 		panel_dir="CEBPA"
+		;;
+		"lsc")
+		panel_dir="LSC"
+		;;
+		"mips mrd")
+		panel_dir="MIPS_MRD"
 		;;
 		*)
 		echo "could not map the panel name to a directory, ${sample_name} $panel_name"
