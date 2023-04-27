@@ -1,13 +1,13 @@
 #! /usr/bin/bash
 
-path=$1
-output=microb_populatn.dat
+path=$PWD
+output=batch4_ntcbnc_all.tsv
 
 lines=0
 > ${output}
-for i in `ls ${path}/*taxa.tsv.micro_populatn`
+for i in `ls ${path}/*ntc_bnc_all.tsv`
 do 
-	file=$(basename ${i} -taxa.tsv.micro_populatn)
+	file=$(basename ${i} .tsv)
 	file2="temp.dat"
 	echo -e "${file}\tproportion" > ${file2}
 	cat ${i} >> ${file2}
@@ -34,9 +34,9 @@ done
 echo "${lines}"
 
 
-for j in `ls ${path}/*taxa.tsv.micro_populatn`
+for j in `ls ${path}/*ntc_bnc_all.tsv`
 do
-	file=$(basename ${j} -taxa.tsv.micro_populatn)
+	file=$(basename ${j} .tsv)
 	file2="temp.dat"
 	echo -e "${file}\tproportion" > ${file2}
 	cat ${j} >> ${file2}

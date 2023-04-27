@@ -39,8 +39,11 @@ do
 		"leukemia panel" | "leukemia panel val" | "alp" | "acute leukemia panel")
 		panel_dir="ALP"
 		;;
-		"narsimha" | "amp" | "narasimha")
+		"narsimha" | "amp" | "narasimha" | "nv2 diagnostic")
 		panel_dir="NARSIMHA"
+		;;
+		"narsimha v2" | "nv2" | "narasimha v2 ")
+		panel_dir="NARSIMHA_V2"
 		;;
 		"mips")
 		panel_dir="MIPS"
@@ -78,7 +81,7 @@ do
 		"usg")
 		panel_dir="USG"
 		;;
-		"cll" | "cll mips")
+		"cll" | "cll mips" | "mipscll")
 		panel_dir="CLL"
 		;;
 		"flt3mrd")
@@ -113,7 +116,7 @@ do
 	folder_name="${sample_year}${sample_description}${sample_number_formatted}${sample_name_append}"
 
 	# Make a folder and copy the fastq.gz files here
-	mkdir -p ${folder_name}/${panel_dir}/
+	mkdir -p ${folder_name}/${panel_dir}
 	#rsync -a ${path_to_fastq}/${sample_name_full}_S*fastq* ${folder_name}/${panel_dir}	# The fastq needs to match the full sample name
 	mv ${path_to_fastq}/${sample_name_full}_S*fastq* ${folder_name}/${panel_dir}/
 	# ls ${folder_name}/${panel_dir}
