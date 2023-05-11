@@ -1,0 +1,5 @@
+for i in `cat samples.dat`; do /home/programs/VCF_MAF/vcf2maf/vcf2maf.pl --input-vcf $i.somaticseq.vcf --output-maf $i.vep.maf --ref-fasta /home/reference_genomes/hg19_broad/hg19_all.fasta --vep-path /home/programs/ensembl-vep/ --tumor-id $i ; done
+
+./maf_filter.py samples.dat
+
+maf_combine.R
